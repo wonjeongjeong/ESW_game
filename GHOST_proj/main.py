@@ -9,13 +9,13 @@ from Ghost import Ghost
 from Start import Start
 
 def main():
-    start = Start()
+    """start = Start()
     try:
         start.show_initial_screen()
         start.wait_for_button_press()
     
     except KeyboardInterrupt:
-        pass
+        pass"""
 
     joystick = Joystick()
     my_image = Image.new("RGB", (joystick.width, joystick.height))

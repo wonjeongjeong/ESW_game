@@ -53,5 +53,16 @@ class Joystick:
         # Make sure to create image with mode 'RGB' for color.
         self.width = self.disp.width
         self.height = self.disp.height
-        background_image = Image.open("/home/kau-esw/esw/GHOST_proj/stage1.png")
-        self.background = background_image.resize((self.width, self.height))
+        level1 = Image.open("/home/kau-esw/ESW/.git/ESW_game/GHOST_proj/level1.png")
+        self.background = level1.resize((self.width, self.height))
+        
+    def change_level(self, level):
+        if level == 1:
+            level2 = Image.open("/home/kau-esw/ESW/.git/ESW_game/GHOST_proj/level2.png")
+            self.background = level2.resize((self.width, self.height))
+        elif level == 2:
+            level3 = Image.open("/home/kau-esw/ESW/.git/ESW_game/GHOST_proj/level3.png")
+            self.background = level3.resize((self.width, self.height))
+        else:
+            level4 = Image.open("/home/kau-esw/ESW/.git/ESW_game/GHOST_proj/level4.png")
+            self.background = level4.resize((self.width, self.height))

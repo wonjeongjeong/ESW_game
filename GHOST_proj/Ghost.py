@@ -7,7 +7,7 @@ class Ghost:
         self.appearance = 'circle'
         self.state = 'right'
         self.position = [width/2 - 20, height/2 - 20, width/2 + 20, height/2 + 20]
-        self.image = Image.open("/home/kau-esw/esw/GHOST_proj/ghost_left.png")
+        self.image = Image.open("/home/kau-esw/ESW/.git/ESW_game/GHOST_proj/ghost_left.png")
         
     def move(self):
         i = 0

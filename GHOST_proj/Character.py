@@ -7,7 +7,7 @@ class Character:
         self.state = 'alive'
         self.position = [width/2 - 100, height/2 - 58, width/2 + 20, height/2 + 40]
         self.outline = None
-        self.image = Image.open("/home/kau-esw/esw/GHOST_proj/loopy.png")
+        self.image = Image.open("/home/kau-esw/ESW/.git/ESW_game/GHOST_proj/loopy1.png")
         
         #my_image = Image.new("RGB", (self.width, self.height))
         #my_image.paste(self.image, (0, 0))
@@ -36,4 +36,11 @@ class Character:
                 
     def display(self, draw):
         draw.bitmap((int(self.position[0]), int(self.position[1])), self.image, fill=None)            
-        
+    
+    def check_collision(self, other):
+        return (
+            self.position[0] < other.position[2]
+            and self.position[2] > other.position[0]
+            and self.position[1] < other.position[3]
+            and self.position[3] > other.position[1]
+        )
