@@ -1,23 +1,22 @@
-import numpy as np
+
 from PIL import Image
 
-
 class Character:
-    def __init__(self, width, height, image_path):
-        self.appearance = 'circle'
-        self.state = None
-        self.position = np.array([width/2 - 20, height/2 - 20, width/2 + 20, height/2 + 20])
-        self.outline = "#FFFFFF"
-        self.image = Image.open(image_path)
-
-    def move(self, command = None):
-        if command == None:
-            self.state = None
-            self.outline = "#FFFFFF" #검정색상 코드!
+    def __init__(self, width, height):
+        self.appearance = 'rectangle'
+        self.state = 'alive'
+        self.position = [width/2 - 100, height/2 - 58, width/2 + 20, height/2 + 40]
+        self.outline = None
+        self.image = Image.open("/home/kau-esw/esw/GHOST_proj/loopy.png")
         
-        else:
-            self.state = 'move'
-            self.outline = "#FF0000" #빨강색상 코드!
+        #my_image = Image.new("RGB", (self.width, self.height))
+        #my_image.paste(self.image, (0, 0))
+    def move(self, command = None):
+        #if command == None:
+        #    self.state = None
+        
+        #else:
+        #    self.state = 'move'
 
             if command == 'up_pressed':
                 self.position[1] -= 5
@@ -36,5 +35,5 @@ class Character:
                 self.position[2] += 5
                 
     def display(self, draw):
-        draw.rectangle(tuple(self.position), outline=self.outline, fill=(0, 0, 0))
-        draw.bitmap((int(self.position[0]), int(self.position[1])), self.image, fill=(255, 255, 255))
+        draw.bitmap((int(self.position[0]), int(self.position[1])), self.image, fill=None)            
+        

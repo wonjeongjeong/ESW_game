@@ -53,5 +53,5 @@ class Joystick:
         # Make sure to create image with mode 'RGB' for color.
         self.width = self.disp.width
         self.height = self.disp.height
-        background_image = Image.open("stage1.png")
+        background_image = Image.open("/home/kau-esw/esw/GHOST_proj/stage1.png")
         self.background = background_image.resize((self.width, self.height))
