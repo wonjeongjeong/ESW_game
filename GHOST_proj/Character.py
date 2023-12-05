@@ -1,11 +1,11 @@
-
+import numpy as np
 from PIL import Image
 
 class Character:
     def __init__(self, width, height):
         self.appearance = 'rectangle'
         self.state = 'alive'
-        self.position = [width/2 - 100, height/2 - 58, width/2 + 20, height/2 + 40]
+        self.position = np.array([width/2 - 100, height/2 - 58, width/2 + 20, height/2 + 40])
         self.outline = None
         self.image = Image.open("/home/kau-esw/ESW/.git/ESW_game/GHOST_proj/loopy1.png")
         
