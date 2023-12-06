@@ -1,7 +1,7 @@
 from digitalio import DigitalInOut, Direction
 from adafruit_rgb_display import st7789
 import board
-from PIL import Image
+from PIL import Image, ImageDraw
 
 class Joystick:
     def __init__(self):
@@ -51,13 +51,30 @@ class Joystick:
 
         # Create blank image for drawing.
         # Make sure to create image with mode 'RGB' for color.
+        
         self.width = self.disp.width
         self.height = self.disp.height
-        level1 = Image.open("/home/kau-esw/ESW/.git/ESW_game/GHOST_proj/level1.png")
-        self.background = level1.resize((self.width, self.height))
+
+    def width_(self):
+        return int(self.width)
+    
+    def height_(self):
+        return int(self.height)
         
+    def display(self, image, position=(0,0)):
+        draw = ImageDraw.Draw(image)
+        img_width, img_height = image.size
+        x, y = position
+        x=int(x)
+        y=int(y)
+        self.disp.image(image, x=x, y=y)   
+    
+    
     def change_level(self, level):
-        if level == 1:
+        if level == 0:
+            level1 = Image.open("/home/kau-esw/ESW/.git/ESW_game/GHOST_proj/level1.png")
+            self.background = level1.resize((self.width, self.height))
+        elif level == 1:
             level2 = Image.open("/home/kau-esw/ESW/.git/ESW_game/GHOST_proj/level2.png")
             self.background = level2.resize((self.width, self.height))
         elif level == 2:
@@ -66,3 +83,5 @@ class Joystick:
         else:
             level4 = Image.open("/home/kau-esw/ESW/.git/ESW_game/GHOST_proj/level4.png")
             self.background = level4.resize((self.width, self.height))
+            
+        self.disp.image(self.background)
