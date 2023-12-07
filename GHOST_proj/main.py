@@ -7,7 +7,7 @@ from Coin import Coin
 import time
 
 def main():
-    start = Start()
+    start = Start()  # 시작화면
     try:
         start.show_initial_screen()
         start.wait_for_button_press()
@@ -15,37 +15,34 @@ def main():
     except KeyboardInterrupt:
         pass
 
-    joystick = Joystick()
-        
-        # 이미지 위에 그림을 그리기 위해 ImageDraw 객체 생성
+    joystick = Joystick()  # joystick 초기화
     
     
-    # 잔상이 남지 않는 코드
     
-    my_loopy = Character(joystick)
-    my_loopy.display()
+    my_loopy = Character(joystick)  # 캐릭터 객체 생성
+    my_loopy.display()  # 캐릭터 띄우기
 
-        # 캐릭터를 현재 위치에 그리기
+
     
     
     enemy1 = Ghost(joystick, (50, 50))
-    enemy2 = Ghost(joystick, (120, 120))
+    enemy2 = Ghost(joystick, (120, 120))   # 유령 생성
     enemies = [enemy1, enemy2]
     
     
     coin1 = Coin(joystick, (100, 50))
-    coin2 = Coin(joystick, (100, 150))
-    # 여러 개의 코인을 추가할 수 있습니다.
+    coin2 = Coin(joystick, (100, 150))    # 호박 생성
+    
 
     coins = [coin1, coin2]
 
         
     while True:
-        for coin in coins:
+        for coin in coins:   # 코인 화면에 띄우기 
             coin.display()
             print("display")    
             
-        for enemy in enemies:
+        for enemy in enemies:   # 유령 화면에 띄워서 움직이게
             enemy.display()
             enemy.move()
         
@@ -68,8 +65,8 @@ def main():
             command['move'] = True
 
           
-        my_loopy.move(command, coins)
-        my_loopy.display()  
+        my_loopy.move(command, coins)  # 캐릭터 이동
+        my_loopy.display()  # 캐릭터 띄우기
         
             
         time.sleep(0.1)

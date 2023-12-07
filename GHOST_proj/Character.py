@@ -6,17 +6,17 @@ class Character:
     def __init__(self, joystick):
         self.appearance = 'circle'
         self.state = None
-        #self.position = np.array([self.joystick.width_()/2 - 100, self.joystick.height_()/2 - 58, self.joystick.width_()/2 + 20, self.joystick.height_()/2 + 40])
         self.joystick = joystick
         self.width = self.joystick.width_()
         self.height = self.joystick.height_()
         self.position = np.array([self.width/2 - 20, self.height/2 - 20, self.width/2 + 20, self.height/2 + 20])
         self.loopy = Image.open("/home/kau-esw/ESW/.git/ESW_game/GHOST_proj/loopy1.png")
-        self.wall_color = (0, 0, 0)
-        self.goal_color = (154, 107, 75)
-        self.level = 1
+        self.wall_color = (0, 0, 0)  #검정 색상 코드
+        self.goal_color = (154, 107, 75)   # 도착지점 색상 코드
+        self.level = 1   #현재 레벨 숫자
+        self.score = 0   # 점수
     
-    def move(self, command = None, coins=[]):
+    def move(self, command = None, coins=[]):  # 캐릭터 이동 함수
         new_position = self.position.copy()
         if command['move'] == False:
             self.state = None
@@ -40,20 +40,20 @@ class Character:
                 self.position[0] += 5
                 self.position[2] += 5
             
-        if not self.is_wall(new_position):
+        if not self.is_wall(new_position):   # 캐릭터 현재 위치가 벽이 아니라면 그대로 진행
             self.position = new_position
             
-        if self.check_coin_collision(coins):
+        if self.check_coin_collision(coins):        # 코인 먹었을 때
             self.score += 100  
         
-        if self.is_scoring_area():
+        if self.is_scoring_area():            # 도착지점에 도착했을 때
             self.score += 500
             self.joystick.change_level(self.level)
             self.level += 1
              
         
 
-    def display(self):
+    def display(self):    # 캐릭터 화면에 띄우기
         self.joystick.display(self.loopy,(self.position[0], self.position[1]))
     
     def check_collision(self, other):

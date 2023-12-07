@@ -11,12 +11,12 @@ class Ghost:
         self.image = Image.open("/home/kau-esw/ESW/.git/ESW_game/GHOST_proj/ghost_left.png")
         
         
-    def move(self):
+    def move(self):  # 좌우로 움직이는 함수
         i = 0
         while True:
             self.state = 'right' if self.state == 'left' else 'left'
             i = 0
-            while i <= 20:
+            while i <= 20: 
                 if self.state == 'left':
                     self.position[0] -= 5
                     self.position[2] -= 5
@@ -27,6 +27,5 @@ class Ghost:
                     i += 5
             time.sleep(0.1)
     
-    def display(self):
+    def display(self):   # 유령 띄우기
         self.joystick.display(self.image, (self.position[0], self.position[1]))
-    

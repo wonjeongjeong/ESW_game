@@ -15,10 +15,10 @@ class Start:
     def wait_for_button_press(self):
         print("Press any button to start")
         while all([self.joystick.button_A.value, self.joystick.button_B.value, self.joystick.button_C.value, self.joystick.button_D.value, self.joystick.button_L.value, self.joystick.button_R.value, self.joystick.button_U.value]):
-            pass
+            pass   # 아무 버튼이나 누르면
         print("Button pressed! Starting the game ...")
         
-        self.joystick.change_level(0)
+        self.joystick.change_level(0) #level 1 실행
         
         
     
